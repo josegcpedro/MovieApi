@@ -1,7 +1,8 @@
 <app-card (newMovie)="getMovie($event)"></app-card>
-<div *ngFor="let movieTitle of movieTitle">
+
+<div *ngFor="let movie of movies">
   <div class="card">
-    <h3>{{movieTitle}}</h3>
-    <p>{{movieDescription}}</p>
+    <h3>{{ movie.title }}</h3> <!-- 👈 movieTitle não existe, mas movie.title sim -->
+    <p>{{ movie.description }}</p> <!-- 👈 movieDescription não existe dentro do loop, mas movie.description sim -->
   </div>
 </div>

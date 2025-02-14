@@ -10,12 +10,21 @@ export class MoviesService {
 
   private http = inject(HttpClient)
 
-  getMovies(movieName: string){
+  getMovies(movieName: string) {
     const params = new HttpParams()
-      .set ('query', movieName)
+      .set('query', movieName)
       .set('api_key', this.apiKey)
 
-      return this.http.get(this.url,{params});
+    return this.http.get<MovieResponse>(this.url, { params });
   }
+}
 
+export interface Movie {
+  title: string;
+  overview: string;
+  original_language: string;
+}
+
+export interface MovieResponse {
+  results: Movie[];
 }
