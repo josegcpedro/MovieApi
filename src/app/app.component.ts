@@ -11,8 +11,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  movie = "shrek";
+  movie = "titanic";
   movieTitle: any[] = [];
+  movieDescription: any[] = [];
 
   constructor(private movieServices: MoviesService) { };
 
@@ -20,11 +21,12 @@ export class AppComponent implements OnInit {
     this.movieServices.getMovies(this.movie).subscribe((data: any) => {
       console.log(data)
       if (data?.results) {
-        this.movieTitle = data.results
-          .filter((movie: any) => movie.original_language === "en")
-          .map((movie: any) =>movie.title);
-      }
-      console.log(this.movieTitle)
+        const filteredMovies = data.results.filter(
+          (movie: any) => movie.original_language === "en")
+ 
+      this.movieTitle = filteredMovies.map((movie:any) => movie.title)
+      this.movieDescription = filteredMovies.map((movie:any) => movie.overview)
+    };
     })
   }
 }
