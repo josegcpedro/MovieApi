@@ -11,11 +11,15 @@ import { MoviesService } from './services/movies.service';
 })
 export class AppComponent implements OnInit {
   movie = "titanic";
+  movieData: any[] = []; //tableau vide
   constructor(private movieServices: MoviesService) { };
 
   ngOnInit() {
-  this.movieServices.getMovies(this.movie).subscribe((data) =>{
-    console.log(data);
-  })
+    this.movieServices.getMovies(this.movie).subscribe((data: any) => {
+      if (data?.results) {
+        this.movieData = data.results.filter((movie: any) => movie.original_language === "fr");
+      }
+      console.log(this.movieData);
+    })
   }
 }
