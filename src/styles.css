@@ -1,0 +1,8 @@
+.card {
+    border: 2px solid blue;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 12px; /* Arredondamento das bordas */
+    background-color: #e0f0ff; /* Azul claro */
+  }
+  

@@ -1,25 +1,30 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from './services/movies.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  movie = "titanic";
-  movieData: any[] = []; //tableau vide
+  movie = "shrek";
+  movieTitle: any[] = [];
+
   constructor(private movieServices: MoviesService) { };
 
   ngOnInit() {
     this.movieServices.getMovies(this.movie).subscribe((data: any) => {
+      console.log(data)
       if (data?.results) {
-        this.movieData = data.results.filter((movie: any) => movie.original_language === "fr");
+        this.movieTitle = data.results
+          .filter((movie: any) => movie.original_language === "en")
+          .map((movie: any) =>movie.title);
       }
-      console.log(this.movieData);
+      console.log(this.movieTitle)
     })
   }
 }
