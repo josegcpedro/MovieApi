@@ -1,3 +1,4 @@
+<app-card (newMovie)="getMovie($event)"></app-card>
 <div *ngFor="let movieTitle of movieTitle">
   <div class="card">
     <h3>{{movieTitle}}</h3>

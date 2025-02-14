@@ -12,8 +12,42 @@ body {
     width: 80%;
     margin: 5px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.3); /* Branco transparente */
-    backdrop-filter: blur(8px); /* Efeito de vidro fosco */
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
     color: black;
   }
   
+
+  label {
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 250px;
+}
+
+input:focus {
+    border-color: #007BFF;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
